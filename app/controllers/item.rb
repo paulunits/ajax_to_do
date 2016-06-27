@@ -9,9 +9,11 @@ end
 post '/items' do
   @item = Item.create(params[:item])
   if request.xhr?
-    erb :'_new_item'
+     erb :'_new_item'
+    # , layout: false
+    # locals: {item: @item}
   else
-    erb :'/'
+    redirect '/'
   end
 end
 
@@ -23,6 +25,10 @@ end
 
 delete '/items/:id' do
   @item = Item.find(params[:id])
-  @item.destroy
+if request.xhr?
+  content_type :json
+  { destroy: @item.destroy }.to_json
+else
   redirect '/lists'
+end
 end
