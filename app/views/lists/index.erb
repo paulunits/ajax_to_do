@@ -4,12 +4,19 @@
 <ul class="lists">
     <% @lists.each do |list| %>
       <ul class="list-link">
-          <li class="list-link"><a href="<%= "lists/#{list.id}" %>"><%= list.name %></a></li><br>
+          <li class="list-link"><%= list.name %></li><br>
                 <ol>
                   <% list.items.each do |item| %>
                     <li><%= item.name %></li>
                   <% end %>
                 </ol>
-        </ul>
+        </ul><br>
+        <form id="items" method="post" action="/items">
+        <input type="hidden" name="item[list_id]" value="<%=list.id%>">
+         <input type="text" name="item[name]" placeholder="Hey! Enter an item!"><br>
+          <input type="submit" value="Create a new item.">
+        </form>
       </li><br>
     <% end %>
+</div>
+

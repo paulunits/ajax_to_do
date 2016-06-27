@@ -8,16 +8,16 @@ end
 
 post '/items' do
   @item = Item.create(params[:item])
-  if @item.save
-    redirect '/lists'
+  if request.xhr?
+    erb :'_new_item'
   else
-    @errors = @item.errors.full_messages
-    erb :'items/new'
+    erb :'/'
   end
 end
 
 get '/items/:id' do
   @item = Item.find(params[:id])
+
   erb :'items/show'
 end
 
