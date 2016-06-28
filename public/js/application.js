@@ -17,10 +17,24 @@ $('.items').on('submit', function(event) {
     data: $input
   });
   ajaxRequest.done(function(data) {
-    $('#listContainer').append(data);
+    $('.listContainer').append(data);
   })
 
 });
 
+$('.delete-item').on('submit', function(event) {
+  event.preventDefault();
+  var $listItem = $(this).parent();
+  var $path = $(this).attr('action');
+  var $method = $(this).attr('method');
+  var ajaxRequest = $.ajax({
+    method: 'DELETE',
+    url: $path
+  });
 
+ajaxRequest.done(function() {
+  $listItem.remove();
+
+  })
+  })
 });
