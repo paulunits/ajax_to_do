@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Todo List</h1><br><br>
+
+<div class="lists">
+    <% @lists.each do |list| %>
+      <ul class="list-link">
+          <li class="listContainer"><%= list.name %></li>
+                <ol>
+                  <% list.items.each do |item| %>
+                    <li><%= item.name %>
+                    <form class="delete-item" method="post" action="/items/<%= item.id %>">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="submit" value="Delete!"></form></li>
+
+                  <% end %>
+                </ol>
+        </ul>
+
+        <br>
+        <form id="items" method="post" action="/items">
+          <input type="hidden" name="item[list_id]" value="<%=list.id%>">
+          <input type="text" name="item[name]" placeholder="Hey! Enter an item!"><br>
+          <input type="submit" value="Create a new item.">
+        </form>
+      </div><br>
+    <% end %>
+</div>
+

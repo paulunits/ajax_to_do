@@ -1,0 +1,15 @@
+List.create!(name: "Groceries")
+List.create!(name: "Chores")
+
+Item.create!(name: "Turnips", list_id: 1)
+Item.create!(name: "Can of dog food", list_id: 1)
+Item.create!(name: "Rash cream", list_id: 1)
+Item.create!(name: "Grape nuts", list_id: 1)
+Item.create!(name: "Condensed fiber nuggets", list_id: 1)
+
+Item.create!(name: "Chop wood", list_id: 2)
+Item.create!(name: "Chop rocks", list_id: 2)
+Item.create!(name: "Break pipes", list_id: 2)
+Item.create!(name: "Fix pipes", list_id: 2)
+Item.create!(name: "Make chili", list_id: 2)
+Item.create!(name: "Make moonshine", list_id: 2)
